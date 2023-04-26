@@ -13,6 +13,11 @@ if (process.env._?.includes('node')) {
         (path:PathLike, enc?:BufferEncoding)=>Promise<Buffer>
     writeFile = (await import('node:fs/promises')).writeFile as
         (path:PathLike, data:string|NodeJS.ArrayBufferView)=>Promise<void>
+} else {  // is socket
+    // @ts-ignore -- can't find `socket:` namespace
+    join = (await import('socket:path')).join;
+    // @ts-ignore
+    ({ readFile, writeFile } = (await import('socket:fs/promises')))
 }
 
 interface Args {

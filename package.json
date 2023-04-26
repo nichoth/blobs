@@ -22,6 +22,7 @@
     "uint8arrays": "^4.0.3"
   },
   "devDependencies": {
+    "@socketsupply/socket": "^0.2.11",
     "@types/node": "^18.16.1",
     "@typescript-eslint/parser": "^5.55.0",
     "esbuild": "^0.15.18",
@@ -32,8 +33,7 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     },
     "./*": {
       "import": [
