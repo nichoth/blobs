@@ -2,17 +2,16 @@
 
 Store blobs by their content address using the blake2s hash algorithm.
 
-## install
-
-```
-npm i @nichoth/blobs
-```
-
 ## featuring
 * ESM only. Sorry, no common JS, because we are using top level `await`
 * compatibility with either Node JS or [SSC](https://github.com/socketsupply/socket)
 * types
 * Contemporary API -- use promises & `async` functions
+
+## install
+```
+npm i @nichoth/blobs
+```
 
 ## docs
 
