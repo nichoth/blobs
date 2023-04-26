@@ -6,12 +6,6 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-test('setup', async () => {
-    await fs.rm(path.join(__dirname, 'GSE7rMWN7m294865pHy7Mws9hvjMqJl-sAvkVvFAyiU'), {
-        force: true
-    })
-})
-
 let blobs
 test('create an instance', t => {
     blobs = Blobs({ dir: __dirname })
@@ -26,10 +20,19 @@ test('blobs.add', async t => {
     t.equal(typeof hash, 'string', 'should return hash as a string')
     t.equal(hash, 'GSE7rMWN7m294865pHy7Mws9hvjMqJl-sAvkVvFAyiU',
         'should return the expected hash')
+
+    const stats = await fs.stat(path.join(__dirname, hash))
+    t.ok(stats, 'should create the file at the right path')
 })
 
 test('blobs.get', async t => {
     const content = await blobs.get(hash, 'utf8')
     t.ok(content, 'got content')
     t.equal(content, 'hello', 'should decode the file as utf8')
+})
+
+test('clean up', async () => {
+    await fs.rm(path.join(__dirname, 'GSE7rMWN7m294865pHy7Mws9hvjMqJl-sAvkVvFAyiU'), {
+        force: true
+    })
 })
