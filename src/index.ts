@@ -35,7 +35,7 @@ export function Blobs ({ dir }:Args):BlobStore {
     const blake = new Blake2s(32)
 
     return {
-        add: async function (_data) {
+        add: async function (_data:string|Uint8Array) {
             let data = _data
             if (typeof _data === 'string') data = fromString(_data)
 
@@ -49,7 +49,7 @@ export function Blobs ({ dir }:Args):BlobStore {
             return hash
         },
 
-        get: function (hash, enc?:BufferEncoding) {
+        get: function (hash:string, enc?:BufferEncoding):Promise<Buffer|string> {
             return readFile(join(dir, hash), enc)
         }
     }
