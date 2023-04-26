@@ -13,29 +13,27 @@ Store blobs by their content address using the blake2s hash algorithm.
 npm i @nichoth/blobs
 ```
 
-## docs
-
-### API
-#### `Blobs({ dir:string })`
+## API
+### `Blobs({ dir:string })`
 ```js
 const blobs = Blobs({ dir: '/hello' })
 ```
 
-#### add: (data:Uint8Array|string) => Promise<string>,
+### add: (data:Uint8Array|string) => Promise<string>,
 Return the hash of the passed in data.
 
 ```js
 const hash = await blobs.add('hello')
 ```
 
-#### get: (hash:string, enc?:BufferEncoding) => Promise<string|Buffer>
+### get: (hash:string, enc?:BufferEncoding) => Promise<string|Buffer>
 Return the data at the given hash.
 
 ```js
 const content = await blobs.get(hash, 'utf8')
 ```
 
-### example
+## example
 
 ```ts
 import { test } from 'tapzero'
