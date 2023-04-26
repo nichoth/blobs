@@ -32,7 +32,5 @@ test('blobs.get', async t => {
 })
 
 test('clean up', async () => {
-    await fs.rm(path.join(__dirname, 'GSE7rMWN7m294865pHy7Mws9hvjMqJl-sAvkVvFAyiU'), {
-        force: true
-    })
+    await fs.rm(path.join(__dirname, 'GSE7rMWN7m294865pHy7Mws9hvjMqJl-sAvkVvFAyiU'))
 })
