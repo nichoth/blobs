@@ -14,7 +14,29 @@ npm i @nichoth/blobs
 * types
 * Contemporary API -- use promises & `async` functions
 
-## example
+## docs
+
+### API
+#### `Blobs({ dir:string })`
+```js
+const blobs = Blobs({ dir: '/hello' })
+```
+
+#### add: (data:Uint8Array|string) => Promise<string>,
+Return the hash of the passed in data.
+
+```js
+const hash = await blobs.add('hello')
+```
+
+#### get: (hash:string, enc?:BufferEncoding) => Promise<string|Buffer>
+Return the data at the given hash.
+
+```js
+const content = await blobs.get(hash, 'utf8')
+```
+
+### example
 
 ```ts
 import { test } from 'tapzero'

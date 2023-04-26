@@ -26,7 +26,7 @@ interface Args {
 
 interface BlobStore {
     add: (data:Uint8Array|string) => Promise<string>,
-    get: (hash:string) => Promise<string|Buffer>
+    get: (hash:string, enc?:BufferEncoding) => Promise<string|Buffer>
 }
 
 export function Blobs ({ dir }:Args):BlobStore {
