@@ -3,9 +3,12 @@
     "listFiles": true,
     "module": "ES2022",
     "target": "ES2022",
+    "types": [
+      "node"
+    ],
     "moduleResolution": "Node",
     "esModuleInterop": true,
-    "lib": ["ES2021", "DOM", "WebWorker"],
+    "lib": ["ES2021"],
     "allowJs": false,
     "skipLibCheck": true,
     "outDir": "dist",
@@ -18,7 +21,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "declaration": true,
     "declarationDir": "dist",
     "declarationMap": true

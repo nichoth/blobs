@@ -1,10 +1,18 @@
 import Blake2s from 'blake2s-js'
+import { PathLike } from 'node:fs'
 import { fromString, toString } from 'uint8arrays'
 
-let join, readFile
+let join:(...segments:string[])=>string
+let readFile:(path:PathLike, enc?:BufferEncoding)=>Promise<Buffer>
+let writeFile:(path:PathLike, data: string | NodeJS.ArrayBufferView)=>Promise<void>
+
 if (process.env._?.includes('node')) {
     join = (await import('node:path')).join
-    readFile = (await import('node:fs/promises')).readFile
+    // typescript mysteries
+    readFile = (await import('node:fs/promises')).readFile as
+        (path:PathLike, enc?:BufferEncoding)=>Promise<Buffer>
+    writeFile = (await import('node:fs/promises')).writeFile as
+        (path:PathLike, data:string|NodeJS.ArrayBufferView)=>Promise<void>
 }
 
 interface Args {
@@ -12,8 +20,8 @@ interface Args {
 }
 
 interface BlobStore {
-    add: (data:Uint8Array|string) => string,
-    get: (hash:string) => Promise<Buffer>
+    add: (data:Uint8Array|string) => Promise<string>,
+    get: (hash:string) => Promise<string|Buffer>
 }
 
 export function Blobs ({ dir }:Args):BlobStore {
@@ -22,17 +30,22 @@ export function Blobs ({ dir }:Args):BlobStore {
     const blake = new Blake2s(32)
 
     return {
-        add: function (_data) {
+        add: async function (_data) {
             let data = _data
             if (typeof _data === 'string') data = fromString(_data)
 
             blake.update(data as Uint8Array)
 
-            return toString(blake.digest())
+            const hash = toString(blake.digest(), 'base64url')
+            // const hash = blake.hexDigest()
+
+            await writeFile(join(dir, hash), data)
+
+            return hash
         },
 
-        get: function (hash) {
-            return readFile(join(dir, hash))
+        get: function (hash, enc?:BufferEncoding) {
+            return readFile(join(dir, hash), enc)
         }
     }
 }

@@ -4,3 +4,5 @@ bundle.js
 src/*.js
 test/*.js
 dist
+# file we're using for tests
+test/GSE7rMWN7m294865pHy7Mws9hvjMqJl-sAvkVvFAyiU
