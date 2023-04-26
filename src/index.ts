@@ -17,7 +17,7 @@ if (process.env._?.includes('node')) {
     // @ts-ignore -- can't find `socket:` namespace
     join = (await import('socket:path')).join;
     // @ts-ignore
-    ({ readFile, writeFile } = (await import('socket:fs/promises')))
+    ({ readFile, writeFile } = await import('socket:fs/promises'))
 }
 
 interface Args {
