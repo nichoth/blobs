@@ -12,6 +12,7 @@ npm i @nichoth/blobs
 * ESM only. Sorry, no common JS, because we are using top level `await`
 * compatibility with either Node JS or [SSC](https://github.com/socketsupply/socket)
 * types
+* Contemporary API -- use promises & `async` functions
 
 ## example
 
