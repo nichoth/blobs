@@ -69,3 +69,9 @@ test('blobs.get', async t => {
     t.equal(content, 'hello', 'should return a string because we passed "utf8"')
 })
 ```
+
+## test
+Test in Node:
+```bash
+npm test
+```
