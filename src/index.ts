@@ -20,16 +20,12 @@ if (process.env._?.includes('node')) {
     ({ readFile, writeFile } = await import('socket:fs/promises'))
 }
 
-interface Args {
-    dir:string
-}
-
 interface BlobStore {
     add: (data:Uint8Array|string) => Promise<string>,
     get: (hash:string, enc?:BufferEncoding) => Promise<string|Buffer>
 }
 
-export function Blobs ({ dir }:Args):BlobStore {
+export function Blobs ({ dir }:{dir:string}):BlobStore {
     if (!dir) throw new Error('need a directory argument')
 
     const blake = new Blake2s(32)
