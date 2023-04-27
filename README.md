@@ -14,7 +14,10 @@ npm i @nichoth/blobs
 ```
 
 ## API
+
 ### `Blobs({ dir:string })`
+Create a new `blobs` object.
+
 ```js
 const blobs = Blobs({ dir: '/hello' })
 ```
