@@ -28,7 +28,7 @@ test('blobs.add', async t => {
 test('blobs.get', async t => {
     const content = await blobs.get(hash, 'utf8')
     t.ok(content, 'got content')
-    t.equal(content, 'hello', 'should decode the file as utf8')
+    t.equal(content, 'hello', 'should return a string because we passed "utf8"')
 })
 
 test('clean up', async () => {
