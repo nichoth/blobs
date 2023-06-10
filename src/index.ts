@@ -28,10 +28,10 @@ interface BlobStore {
 export function Blobs ({ dir }:{dir:string}):BlobStore {
     if (!dir) throw new Error('need a directory argument')
 
-    const blake = new Blake2s(32)
-
     return {
         add: async function (_data:string|Uint8Array) {
+            const blake = new Blake2s(32)
+
             let data = _data
             if (typeof _data === 'string') data = fromString(_data)
 
