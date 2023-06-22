@@ -23,7 +23,7 @@ const blobs = Blobs({ dir: '/hello' })
 ```
 
 ### add: (data:Uint8Array|string) => Promise<string>,
-Return the hash of the passed in data.
+Write the data to a file, and return the hash of the data passed in. The hash string returned here is what you would pass in to `blobs.get`.
 
 ```js
 const hash = await blobs.add('hello')
