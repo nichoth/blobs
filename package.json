@@ -22,13 +22,13 @@
     "uint8arrays": "^4.0.3"
   },
   "devDependencies": {
+    "@nichoth/tapzero": "0.8.0",
     "@socketsupply/socket": "^0.2.11",
     "@types/node": "^18.16.1",
     "@typescript-eslint/parser": "^5.55.0",
     "esbuild": "^0.15.18",
     "standardx": "^7.0.0",
     "tap-arc": "^0.3.5",
-    "tapzero": "^0.6.1",
     "typescript": "^5.0.2"
   },
   "exports": {

@@ -1,4 +1,4 @@
-import { test } from 'tapzero'
+import { test } from '@nichoth/tapzero'
 import { Blobs } from '@nichoth/blobs'
 import path from 'node:path'
 import fs from 'node:fs/promises'
