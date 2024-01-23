@@ -17,6 +17,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@socketsupply/socket": "^0.2.11"
+    "@socketsupply/socket": "^0.5.4"
   }
 }
